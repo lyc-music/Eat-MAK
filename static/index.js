@@ -124,7 +124,7 @@ function gameRestart() {
     _gameScore = 0;
     _gameOver = false;
     _gameStart = false;
-    _gameTimeNum = 20;
+    _gameTimeNum = 60;
     GameTimeLayer.innerHTML = creatTimeText(_gameTimeNum);
     countBlockSize();
     refreshGameLayer(GameLayer[0]);
@@ -337,17 +337,11 @@ function backBtn() {
 }
 
 function shareText(score) {
-    let date2 = new Date();
-    deviation_time = (date2.getTime() - _date1.getTime())
-    if (deviation_time > 23000) {
-        return '倒计时多了' + ((deviation_time / 1000) - 20).toFixed(2) + "s";
-    }
-    SubmitResults();
-    if (score <= 49) return '试着好好练一下？';
-    if (score <= 99) return 'TCL';
-    if (score <= 149) return 'TQL';
-    if (score <= 199) return '您';
-    return '人？';
+    if (score <= 49*3) return '马AK：你这也太逊了';
+    if (score <= 99*3) return '马AK：你不行';
+    if (score <= 149*3) return '马AK：呦，还不错嘛';
+    if (score <= 199*3) return '马AK：我超，你还是人吗';
+    return '马AK：爹';
 }
 
 function toStr(obj) {
@@ -438,5 +432,3 @@ function click(index) {
 
     gameTapEvent(fakeEvent)
 }
-
-console.log("不修改，好嘛？乱传又有什么用呢？(ˉ▽ˉ；)...")
